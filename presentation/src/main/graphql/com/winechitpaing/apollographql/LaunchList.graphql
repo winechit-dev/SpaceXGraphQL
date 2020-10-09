@@ -1,14 +1,10 @@
-query LaunchList($cursor: String) {
-    launches(after: $cursor) {
+query LaunchList {
+    launches {
         cursor
         hasMore
-        launches {
+        launches
             id
             site
-            mission {
-                name
-                missionPatch(size: SMALL)
-            }
         }
     }
 }
