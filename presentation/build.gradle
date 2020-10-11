@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.apollographql.apollo'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.apollographql.apollo'
 
 android {
     compileSdkVersion 30
@@ -50,6 +50,7 @@ dependencies {
 
     // Dagger DI
     api "com.google.dagger:dagger:$dagger_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     // Image loading
@@ -61,6 +62,9 @@ dependencies {
 
     // android material
     implementation 'com.google.android.material:material:1.2.1'
+
+    // okhttp logging
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
 
     //apollo graph ql
     implementation 'com.apollographql.apollo:apollo-runtime:2.4.1'
@@ -92,6 +96,3 @@ dependencies {
 }
 
 
-apollo {
-    generateKotlinModels.set(true)
-}
