@@ -1,6 +1,6 @@
-package com.winechitpaing.apollographql.dependnecyinjection.app
+package com.winechitpaing.apollographql.di.app
 
-import com.winechitpaing.apollographql.dependnecyinjection.activity.ActivityComponent
+import com.winechitpaing.apollographql.di.activity.ActivityComponent
 import dagger.Component
 
 @AppScope

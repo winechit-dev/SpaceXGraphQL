@@ -1,7 +1,7 @@
-package com.winechitpaing.apollographql.dependnecyinjection.presentation
+package com.winechitpaing.apollographql.di.presentation
 
 import androidx.lifecycle.ViewModel
-import com.winechitpaing.apollographql.launchList.LaunchListViewModel
+import com.winechitpaing.apollographql.ui.launchList.LaunchListViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

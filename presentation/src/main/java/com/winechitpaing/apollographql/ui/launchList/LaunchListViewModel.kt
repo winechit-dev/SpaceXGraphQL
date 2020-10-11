@@ -1,9 +1,10 @@
-package com.winechitpaing.apollographql.launchList
+package com.winechitpaing.apollographql.ui.launchList
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavController
 import com.winechitpaing.data.LaunchListQuery
 import com.winechitpaing.domain.interactor.GetLaunchListUseCase
 import com.winechitpaing.domain.result.LaunchListResult
@@ -14,6 +15,8 @@ class LaunchListViewModel @Inject constructor(
     private val getLaunchListUseCase: GetLaunchListUseCase
 ) : ViewModel() {
 
+    var navigationController: NavController? = null
+
     private lateinit var _launchList: MutableLiveData<LaunchListQuery.LaunchesPast>
     val launchList: LiveData<LaunchListQuery.LaunchesPast>
         get() = _launchList
@@ -21,6 +24,10 @@ class LaunchListViewModel @Inject constructor(
     private lateinit var _errorMessage: MutableLiveData<String>
     val errorMessage: LiveData<String>
         get() = _errorMessage
+
+    init {
+        fetchLaunchList()
+    }
 
     fun fetchLaunchList() {
         viewModelScope.launch {

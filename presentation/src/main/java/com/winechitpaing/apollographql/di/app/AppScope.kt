@@ -1,4 +1,4 @@
-package com.winechitpaing.apollographql.dependnecyinjection.app
+package com.winechitpaing.apollographql.di.app
 
 import javax.inject.Scope
 

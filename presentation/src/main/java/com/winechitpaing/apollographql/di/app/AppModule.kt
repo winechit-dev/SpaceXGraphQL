@@ -1,4 +1,4 @@
-package com.winechitpaing.apollographql.dependnecyinjection.app
+package com.winechitpaing.apollographql.di.app
 
 import android.app.Application
 import com.apollographql.apollo.ApolloClient
@@ -11,8 +11,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
 @Module
-class AppModule(val application: Application) {
+class AppModule(private val application: Application) {
 
+    @Provides
+    fun application() = application
 
     @Provides
     @AppScope
