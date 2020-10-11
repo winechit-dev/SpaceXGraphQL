@@ -2,7 +2,7 @@ package com.winechitpaing.apollographql.di.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import com.winechitpaing.apollographql.di.presentation.PresentationComponent
-import com.winechitpaing.apollographql.di.presentation.PresentationModule
+import com.winechitpaing.apollographql.di.presentation.modules.PresentationModule
 import dagger.BindsInstance
 import dagger.Subcomponent
 
@@ -10,7 +10,7 @@ import dagger.Subcomponent
 @Subcomponent(modules = [ActivityModule::class])
 interface ActivityComponent {
 
-    fun newPresentationComponent(presentationModule: PresentationModule ): PresentationComponent
+    fun newPresentationComponent(presentationModule: PresentationModule): PresentationComponent
 
     @Subcomponent.Builder
     interface Builder {

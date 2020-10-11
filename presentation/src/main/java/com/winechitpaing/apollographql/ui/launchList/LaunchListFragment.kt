@@ -37,6 +37,8 @@ class LaunchListFragment : BaseFragment() {
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(LaunchListViewModel::class.java)
 
+        viewModel.fetchLaunchList()
+
         viewModel.launchList.observe(viewLifecycleOwner, Observer {
             Log.d("LaunchList", it.toString())
             Toast.makeText(requireContext(), "fetched $it ", Toast.LENGTH_SHORT).show()

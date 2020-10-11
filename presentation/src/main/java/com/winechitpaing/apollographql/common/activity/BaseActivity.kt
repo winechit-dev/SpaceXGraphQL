@@ -2,10 +2,10 @@ package com.winechitpaing.apollographql.common.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import com.winechitpaing.apollographql.SpaceXApplication
-import com.winechitpaing.apollographql.di.presentation.PresentationModule
+import com.winechitpaing.apollographql.di.presentation.modules.PresentationModule
 
 abstract class BaseActivity : AppCompatActivity(){
-    private val appComponent get() = (application as SpaceXApplication).appComponent
+     val appComponent get() = (application as SpaceXApplication).appComponent
 
     val activityComponent by lazy {
         appComponent.newActivityComponentBuilder()

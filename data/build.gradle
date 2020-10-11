@@ -67,4 +67,7 @@ dependencies {
 
 apollo {
     generateKotlinModels.set(true)
+    useSemanticNaming = true
+    customTypeMapping['ISOTime'] = "java.util.Date"
+    customTypeMapping['Json'] = "java.lang.String"
 }

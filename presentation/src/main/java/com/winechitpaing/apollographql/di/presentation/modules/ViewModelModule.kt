@@ -1,6 +1,7 @@
-package com.winechitpaing.apollographql.di.presentation
+package com.winechitpaing.apollographql.di.presentation.modules
 
 import androidx.lifecycle.ViewModel
+import com.winechitpaing.apollographql.di.presentation.ViewModelKey
 import com.winechitpaing.apollographql.ui.launchList.LaunchListViewModel
 import dagger.Binds
 import dagger.Module

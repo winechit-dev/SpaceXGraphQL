@@ -9,10 +9,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
 fun apolloClient (): ApolloClient {
-    check(Looper.myLooper() == Looper.getMainLooper()) {
-        "Only the main thread can get the apolloClient instance"
-    }
-
     val okHttpClient by lazy {
         OkHttpClient.Builder()
             .connectTimeout(90, TimeUnit.SECONDS)
