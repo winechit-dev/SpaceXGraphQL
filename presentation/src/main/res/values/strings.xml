@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Apollo GraphQL</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">SpaceX GraphQL</string>
+
+    <string name="launch_list">Launch List</string>
+    <string name="launch_past_detail">Detail</string>
+    <string name="default_launch_date">2007-03-21T01:10:00.000Z</string>
 </resources>

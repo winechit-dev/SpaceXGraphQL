@@ -1,6 +1,7 @@
 package com.winechitpaing.data.network
 
 import com.winechitpaing.domain.result.LaunchListResult
+import dagger.Provides
 
 interface SpaceXApi {
     companion object {
