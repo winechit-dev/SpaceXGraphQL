@@ -1,5 +1,7 @@
 package com.winechitpaing.data.network
 
+import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.coroutines.await
 import com.apollographql.apollo.coroutines.toDeferred
 import com.apollographql.apollo.exception.ApolloException
 import com.winechitpaing.data.LaunchListQuery
@@ -14,13 +16,14 @@ import javax.inject.Inject
 class SpaceXApiImpl @Inject constructor(
     private val networkHandler: NetworkHandler,
     private val launchPastJsonMapper: LaunchPastJsonMapper,
-    private val launchPastDataMapper: LaunchPastDataMapper
+    private val launchPastDataMapper: LaunchPastDataMapper,
+    private val apolloClient: ApolloClient
 ) : SpaceXApi {
     override suspend fun getLaunchPastList(): LaunchListResult {
         return withContext(Dispatchers.IO) {
             if (networkHandler.isConnected) {
                 val response = try {
-                    apolloClient().query(LaunchListQuery()).toDeferred().await()
+                    apolloClient.query(LaunchListQuery()).await()
                 } catch (e: ApolloException) {
                     return@withContext LaunchListResult.ServerError(e.localizedMessage ?: e.message!!)
                 }

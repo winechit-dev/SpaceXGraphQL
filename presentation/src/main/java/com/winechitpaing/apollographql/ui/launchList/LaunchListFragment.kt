@@ -51,6 +51,8 @@ class LaunchListFragment : BaseFragment(), LaunchesAdapter.OnItemClickListener {
             adapter = launchesAdapter
         }
 
+        viewModel.fetchLaunchList()
+
         viewModel.launchList.observe(viewLifecycleOwner, Observer {
             launchesAdapter.setData(it)
             Log.d("LaunchList", it.toString())

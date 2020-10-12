@@ -25,11 +25,8 @@ class LaunchListViewModel @Inject constructor(
     val errorMessage: LiveData<String>
         get() = _errorMessage
 
-    init {
-        fetchLaunchList()
-    }
 
-    private fun fetchLaunchList() {
+     fun fetchLaunchList() {
         viewModelScope.launch {
 
             when (val result: LaunchListResult = getLaunchListUseCase.invoke()) {

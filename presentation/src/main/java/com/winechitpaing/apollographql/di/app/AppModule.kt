@@ -29,8 +29,7 @@ class AppModule(private val application: Application) {
     @Provides
     fun application() = application
 
-  /*  @AppScope
-    @Apollo
+    @AppScope
     @Provides
     fun provideApolloClient(okHttpClient: OkHttpClient): ApolloClient {
         return ApolloClient.builder()
@@ -39,20 +38,29 @@ class AppModule(private val application: Application) {
             .build()
     }
 
-
     @AppScope
     @Provides
-    fun okHttpClient() = OkHttpClient.Builder()
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(90, TimeUnit.SECONDS)
         .readTimeout(90, TimeUnit.SECONDS)
         .writeTimeout(90, TimeUnit.SECONDS)
         .addInterceptor(ResponseCodeInterceptor())
         .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-        .build()*/
+        .build()
 
     @AppScope
     @Provides
-    fun provideSpaceXApi(spaceXApiImpl: SpaceXApiImpl): SpaceXApi = spaceXApiImpl
+    fun provideSpaceXApi(
+        networkHandler: NetworkHandler,
+        launchPastJsonMapper: LaunchPastJsonMapper,
+        launchPastDataMapper: LaunchPastDataMapper,
+        apolloClient: ApolloClient
+    ): SpaceXApi = SpaceXApiImpl(
+        networkHandler = networkHandler,
+        launchPastJsonMapper = launchPastJsonMapper,
+        launchPastDataMapper = launchPastDataMapper,
+        apolloClient = apolloClient
+    )
 
 
     @Provides
