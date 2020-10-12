@@ -17,7 +17,8 @@ class LaunchPastDetailFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private lateinit var viewModel: LaunchListViewModel
+    @Inject
+    lateinit var viewModel : LaunchListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         injector.inject(this)
@@ -35,7 +36,6 @@ class LaunchPastDetailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this, viewModelFactory).get(LaunchListViewModel::class.java)
     }
 
 }

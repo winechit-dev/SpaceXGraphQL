@@ -13,9 +13,8 @@ class LaunchListActivity : BaseActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private val viewModel: LaunchListViewModel by lazy {
-        ViewModelProvider(this, viewModelFactory).get(LaunchListViewModel::class.java)
-    }
+    @Inject
+    lateinit var viewModel : LaunchListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

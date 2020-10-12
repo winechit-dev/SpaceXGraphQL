@@ -22,9 +22,9 @@ class LaunchListFragment : BaseFragment(), LaunchesAdapter.OnItemClickListener {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private val viewModel: LaunchListViewModel by lazy {
-        ViewModelProvider(this, viewModelFactory).get(LaunchListViewModel::class.java)
-    }
+    @Inject
+    lateinit var viewModel : LaunchListViewModel
+
 
     private val launchesAdapter: LaunchesAdapter by lazy {
         LaunchesAdapter(this)
