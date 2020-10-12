@@ -8,17 +8,27 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.winechitpaing.apollographql.R
+import com.winechitpaing.apollographql.adapter.LaunchesAdapter
 import com.winechitpaing.apollographql.common.fragment.BaseFragment
 import com.winechitpaing.apollographql.common.viewmodels.ViewModelFactory
+import kotlinx.android.synthetic.main.fragment_launch_list.*
 import javax.inject.Inject
 
-class LaunchListFragment : BaseFragment() {
+class LaunchListFragment : BaseFragment(), LaunchesAdapter.OnItemClickListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private lateinit var viewModel: LaunchListViewModel
+    private val viewModel: LaunchListViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(LaunchListViewModel::class.java)
+    }
+
+    private val launchesAdapter: LaunchesAdapter by lazy {
+        LaunchesAdapter(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         injector.inject(this)
@@ -35,11 +45,14 @@ class LaunchListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this, viewModelFactory).get(LaunchListViewModel::class.java)
-
-        viewModel.fetchLaunchList()
+        rv_launch_past.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = launchesAdapter
+        }
 
         viewModel.launchList.observe(viewLifecycleOwner, Observer {
+            launchesAdapter.setData(it)
             Log.d("LaunchList", it.toString())
             Toast.makeText(requireContext(), "fetched $it ", Toast.LENGTH_SHORT).show()
         })
@@ -48,5 +61,9 @@ class LaunchListFragment : BaseFragment() {
             Log.d("LaunchList", it.toString())
             Toast.makeText(requireContext(), "fetched $it ", Toast.LENGTH_SHORT).show()
         })
+    }
+
+    override fun onItemClicked(launchIndex: Int, itemView: View) {
+
     }
 }

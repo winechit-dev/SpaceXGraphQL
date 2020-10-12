@@ -13,14 +13,14 @@ class LaunchListActivity : BaseActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private lateinit var viewModel: LaunchListViewModel
+    private val viewModel: LaunchListViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(LaunchListViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injector.inject(this)
         setContentView(R.layout.activity_main)
-
-        viewModel = ViewModelProvider(this, viewModelFactory).get(LaunchListViewModel::class.java)
 
         viewModel.navigationController = Navigation.findNavController(this, R.id.my_nav_host_fragment)
     }

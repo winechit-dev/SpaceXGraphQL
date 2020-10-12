@@ -5,7 +5,7 @@ import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
 import com.winechitpaing.data.LaunchListQuery
 import com.winechitpaing.data.entity.LaunchPastEntity
-import com.winechitpaing.data.entity.LaunchSiteEntity
+import com.winechitpaing.data.entity.LinkEntity
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -25,13 +25,13 @@ class LaunchPastJsonMapper @Inject constructor(private val gson: Gson) {
         responseObject.forEach {
             list.add(
                 LaunchPastEntity(
+                    id = it?.id ?: "",
                     mission_name = it?.mission_name ?: "",
-                    launch_date_local = (it?.launch_date_local ?: "") as String,
-                    launch_siteEntity = LaunchSiteEntity((it?.launch_site?.site_name_long.toString()) )
+                    launch_date_local = ((it?.launch_date_local ?: 0) as String),
+                    links = LinkEntity((it?.links?.mission_patch.toString()) )
                 )
             )
         }
-
         return list
     }
 }

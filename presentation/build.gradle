@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.apollographql.apollo'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 30
@@ -78,6 +79,10 @@ dependencies {
 
     //crypto
     implementation 'androidx.security:security-crypto:1.1.0-alpha02'
+
+    //Epoxy for listing
+    implementation "com.airbnb.android:epoxy:$epoxyVersion"
+    kapt "com.airbnb.android:epoxy-processor:$epoxyVersion"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

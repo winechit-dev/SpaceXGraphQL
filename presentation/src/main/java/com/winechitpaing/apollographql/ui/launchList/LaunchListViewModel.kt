@@ -29,7 +29,7 @@ class LaunchListViewModel @Inject constructor(
         fetchLaunchList()
     }
 
-    fun fetchLaunchList() {
+    private fun fetchLaunchList() {
         viewModelScope.launch {
 
             when (val result: LaunchListResult = getLaunchListUseCase.invoke()) {
