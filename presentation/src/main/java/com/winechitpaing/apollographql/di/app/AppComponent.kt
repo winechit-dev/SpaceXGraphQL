@@ -9,6 +9,4 @@ import dagger.Component
 interface AppComponent {
 
     fun newActivityComponentBuilder(): ActivityComponent.Builder
-
-
 }

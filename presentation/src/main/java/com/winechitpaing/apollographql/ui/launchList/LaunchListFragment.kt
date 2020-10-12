@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.winechitpaing.apollographql.R
 import com.winechitpaing.apollographql.adapter.LaunchesAdapter
 import com.winechitpaing.apollographql.common.fragment.BaseFragment

@@ -2,10 +2,8 @@ package com.winechitpaing.apollographql.di.app
 
 import android.app.Application
 import com.apollographql.apollo.ApolloClient
-import com.google.gson.Gson
 import com.winechitpaing.data.common.network.ResponseCodeInterceptor
-import com.winechitpaing.data.entity.mapper.LaunchPastDataMapper
-import com.winechitpaing.data.entity.mapper.LaunchPastJsonMapper
+import com.winechitpaing.data.mapper.LaunchPastDataMapper
 import com.winechitpaing.data.network.SpaceXApi
 import com.winechitpaing.data.network.SpaceXApiImpl
 import com.winechitpaing.data.platform.NetworkHandler
@@ -13,13 +11,11 @@ import com.winechitpaing.data.repository.LaunchListRepository
 import com.winechitpaing.data.repository.dataSource.DataSource
 import com.winechitpaing.data.repository.dataSource.DataSourceImpl
 import com.winechitpaing.domain.repository.DataRepository
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 
 @Module
 class AppModule(private val application: Application) {
@@ -52,12 +48,10 @@ class AppModule(private val application: Application) {
     @Provides
     fun provideSpaceXApi(
         networkHandler: NetworkHandler,
-        launchPastJsonMapper: LaunchPastJsonMapper,
         launchPastDataMapper: LaunchPastDataMapper,
         apolloClient: ApolloClient
     ): SpaceXApi = SpaceXApiImpl(
         networkHandler = networkHandler,
-        launchPastJsonMapper = launchPastJsonMapper,
         launchPastDataMapper = launchPastDataMapper,
         apolloClient = apolloClient
     )
@@ -65,9 +59,6 @@ class AppModule(private val application: Application) {
 
     @Provides
     fun provideNetworkHandler() = NetworkHandler(application)
-
-    @Provides
-    fun provideLaunchPastJsonMapper() = LaunchPastJsonMapper(Gson())
 
     @Provides
     fun provideLaunchPastDataMapper() = LaunchPastDataMapper()
