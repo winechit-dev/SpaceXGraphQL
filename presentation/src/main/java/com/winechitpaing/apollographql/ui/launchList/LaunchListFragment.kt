@@ -54,7 +54,6 @@ class LaunchListFragment : BaseFragment(), LaunchesAdapter.OnItemClickListener {
         viewModel.launchList.observe(viewLifecycleOwner, Observer {
             launchesAdapter.setData(it)
             Log.d("LaunchList", it.toString())
-            Toast.makeText(requireContext(), "fetched $it ", Toast.LENGTH_SHORT).show()
         })
 
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer {

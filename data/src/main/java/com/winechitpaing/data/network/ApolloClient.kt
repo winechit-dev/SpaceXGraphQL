@@ -1,7 +1,5 @@
 package com.winechitpaing.data.network
 
-import android.content.Context
-import android.os.Looper
 import com.apollographql.apollo.ApolloClient
 import com.winechitpaing.data.common.network.ResponseCodeInterceptor
 import okhttp3.OkHttpClient
