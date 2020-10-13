@@ -7,4 +7,35 @@
     <string name="msg_no_internet_connection">No internet connection</string>
     <string name="msg_data_not_found">Data not found</string>
     <string name="msg_unknow_error">Unknown Error</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="flight_number">Flight Number</string>
+    <string name="mission_name">Mission Name</string>
+    <string name="launch_date">Launch date</string>
+    <string name="launch_site">Launch Site</string>
+
+    <string name="landing">Landing</string>
+    <string name="block">Block</string>
+    <string name="flight">Flight</string>
+    <string name="reused">Reused</string>
+    <string name="no_info">No info</string>
+    <string name="unknown_core">Unknown Core</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="label_cores">Cores</string>
+
+    <string name="nationality">nationality</string>
+    <string name="manufacturer">manufacturer</string>
+    <string name="payload_type">payload type</string>
+    <string name="payload_mass_kg">payload mass [kg]</string>
+    <string name="orbit">orbit</string>
+    <string name="payload_reused">reused</string>
+    <string name="website">Website</string>
+
+    <string name="customers_payloads">Customers:</string>
+    <string name="payloads">Payloads</string>
+
+    <string name="links">Links</string>
 </resources>

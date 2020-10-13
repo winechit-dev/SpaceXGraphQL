@@ -5,13 +5,16 @@ import androidx.navigation.NavController
 import com.winechitpaing.apollographql.ui.launchs.uimodel.LaunchsPastUIResult
 import com.winechitpaing.apollographql.ui.launchs.uimodel.LaunchsPastUiModel
 import com.winechitpaing.apollographql.utils.getLocalTimeFromUnix
+import com.winechitpaing.domain.interactor.GetLaunchDetailUseCase
 import com.winechitpaing.domain.interactor.GetLaunchListUseCase
 import com.winechitpaing.domain.model.LaunchPast
+import com.winechitpaing.domain.result.LaunchDetailResult
 import com.winechitpaing.domain.result.LaunchsPastResult
 import javax.inject.Inject
 
 class LaunchsViewModel @Inject constructor(
-    private val getLaunchListUseCase: GetLaunchListUseCase
+    private val getLaunchListUseCase: GetLaunchListUseCase,
+    private val getLaunchDetailUseCase: GetLaunchDetailUseCase
 ) : ViewModel() {
 
     var navigationController: NavController? = null
@@ -31,9 +34,14 @@ class LaunchsViewModel @Inject constructor(
                 it.id,
                 it.mission_name,
                 getLocalTimeFromUnix(it.launch_date_local),
-                it.links
+                it.mission_patch
             )
         }
+    }
+
+    fun getLaunchDetail(id: String): LiveData<LaunchDetailResult> = liveData {
+        val result: LaunchDetailResult = getLaunchDetailUseCase.invoke(id)
+        emit(result)
     }
 
 }

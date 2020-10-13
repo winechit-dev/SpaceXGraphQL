@@ -32,15 +32,12 @@ class LaunchesAdapter(
             itemView.text_launch_date.text = launch.launch_date_local
             itemView.text_mission_name.text = launch.mission_name
 
-            if (!launch.links.mission_patch.isBlank()) {
-               itemView.image_mission_patch.loadFromUrl(launch.links.mission_patch)
+            if (!launch.mission_patch.isBlank()) {
+               itemView.image_mission_patch.loadFromUrl(launch.mission_patch)
             }
 
             itemView.setOnClickListener {
-                if (adapterPosition != -1) itemClickListener.onItemClicked(
-                    launchesList.indexOf(launch),
-                    itemView
-                )
+                itemClickListener.onItemClicked(launch.id)
             }
         }
     }
@@ -51,6 +48,6 @@ class LaunchesAdapter(
     }
 
     interface OnItemClickListener {
-        fun onItemClicked(launchIndex: Int, itemView: View)
+        fun onItemClicked(id : String)
     }
 }

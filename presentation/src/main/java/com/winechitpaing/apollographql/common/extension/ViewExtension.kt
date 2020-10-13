@@ -13,6 +13,9 @@ import com.bumptech.glide.request.target.BaseTarget
 import com.bumptech.glide.request.target.SizeReadyCallback
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
+import com.winechitpaing.apollographql.R
+import com.winechitpaing.apollographql.R2.id.image_mission_patch
+import kotlinx.android.synthetic.main.fragment_launch_past_detail.*
 
 fun View.cancelTransition() {
     transitionName = null
@@ -32,11 +35,19 @@ fun View.invisible() {
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int): View =
     LayoutInflater.from(context).inflate(layoutRes, this, false)
 
-fun ImageView.loadFromUrl(url: String) =
-    Glide.with(this.context.applicationContext)
-        .load(url)
-        .transition(DrawableTransitionOptions.withCrossFade())
-        .into(this)!!
+fun ImageView.loadFromUrl(url: String?) =
+    if(url!= null){
+        Glide.with(this.context.applicationContext)
+            .load(url)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(this)
+    }else{
+        Glide.with(this.context.applicationContext)
+            .load(R.drawable.ic_launcher_background)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(this)
+    }
+
 
 fun ImageView.loadUrlAndPostponeEnterTransition(url: String, activity: FragmentActivity) {
     val target: Target<Drawable> = ImageViewBaseTarget(this, activity)

@@ -1,0 +1,45 @@
+query LaunchDetail($id:ID!){
+    launch(id: $id) {
+        id
+        mission_name
+        launch_date_local
+        launch_site {
+            site_name_long
+            site_name
+        }
+        links {
+            article_link
+            video_link
+            wikipedia
+            mission_patch
+        }
+        rocket {
+            rocket_name
+            first_stage {
+                cores {
+                    flight
+                    block
+                    land_success
+                    landing_type
+                    landing_vehicle
+                    reused
+                }
+            }
+            second_stage {
+                block
+                payloads {
+                    payload_type
+                    payload_mass_kg
+                    payload_mass_lbs
+                    reused
+                    customers
+                    nationality
+                    orbit
+                    manufacturer
+                    id
+                }
+            }
+        }
+    }
+
+}

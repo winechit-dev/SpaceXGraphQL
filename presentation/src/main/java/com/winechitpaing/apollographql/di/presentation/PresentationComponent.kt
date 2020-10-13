@@ -4,7 +4,7 @@ import com.winechitpaing.apollographql.di.presentation.modules.PresentationModul
 import com.winechitpaing.apollographql.di.presentation.modules.ViewModelModule
 import com.winechitpaing.apollographql.ui.launchs.LaunchsActivity
 import com.winechitpaing.apollographql.ui.launchs.LaunchsFragment
-import com.winechitpaing.apollographql.ui.launchs.LaunchDetailFragment
+import com.winechitpaing.apollographql.ui.launchDetail.LaunchDetailFragment
 import dagger.Subcomponent
 
 @PresentationScope

@@ -26,7 +26,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
+
+
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -83,6 +93,10 @@ dependencies {
     //Epoxy for listing
     implementation "com.airbnb.android:epoxy:$epoxyVersion"
     kapt "com.airbnb.android:epoxy-processor:$epoxyVersion"
+
+    // Groupie
+    implementation "com.xwray:groupie:2.7.0"
+    implementation "com.xwray:groupie-kotlin-android-extensions:2.7.0"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

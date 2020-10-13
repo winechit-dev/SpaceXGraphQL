@@ -10,9 +10,9 @@ import java.util.Locale
 
 
 
-fun getLocalTimeFromUnix(unixTime: Long): String {
+fun getLocalTimeFromUnix(unixTime: String): String {
     val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
     simpleDateFormat.timeZone = Calendar.getInstance().timeZone
-    return simpleDateFormat.format(Date(unixTime * 1000))
+    return simpleDateFormat.format(Date((unixTime.toLongOrNull() ?: 1) * 1000))
 }
 

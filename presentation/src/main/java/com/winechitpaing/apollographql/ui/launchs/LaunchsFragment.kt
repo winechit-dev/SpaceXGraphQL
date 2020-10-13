@@ -4,9 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.winechitpaing.apollographql.R
 import com.winechitpaing.apollographql.adapter.LaunchesAdapter
+import com.winechitpaing.apollographql.common.extension.invisible
+import com.winechitpaing.apollographql.common.extension.visible
 import com.winechitpaing.apollographql.common.fragment.BaseFragment
 import com.winechitpaing.apollographql.common.viewmodels.ViewModelFactory
 import com.winechitpaing.apollographql.ui.launchs.uimodel.LaunchsPastUIResult
@@ -45,6 +49,7 @@ class LaunchsFragment : BaseFragment(), LaunchesAdapter.OnItemClickListener {
     }
 
     private fun initUI() {
+        progress_bar.visible()
         rv_launch_past.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(requireContext())
@@ -52,6 +57,7 @@ class LaunchsFragment : BaseFragment(), LaunchesAdapter.OnItemClickListener {
         }
 
         viewModel.fetchLaunchList.observe(viewLifecycleOwner, { result ->
+            progress_bar.invisible()
             when (result) {
                 is LaunchsPastUIResult.Success -> launchesAdapter.setData(result.data)
                 is LaunchsPastUIResult.FeatureFailure -> requireContext().toast(getString(R.string.msg_data_not_found))
@@ -62,7 +68,11 @@ class LaunchsFragment : BaseFragment(), LaunchesAdapter.OnItemClickListener {
         })
     }
 
-    override fun onItemClicked(launchIndex: Int, itemView: View) {
 
+
+    override fun onItemClicked(id: String) {
+        findNavController().navigate(
+            LaunchListFragmentDirections.openLaunchDetails(launchId = id)
+        )
     }
 }
