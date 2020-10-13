@@ -1,24 +1,22 @@
-package com.winechitpaing.apollographql.ui.launchList
+package com.winechitpaing.apollographql.ui.launchs
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import com.winechitpaing.apollographql.R
 import com.winechitpaing.apollographql.common.fragment.BaseFragment
 import com.winechitpaing.apollographql.common.viewmodels.ViewModelFactory
 import javax.inject.Inject
 
 
-class LaunchPastDetailFragment : BaseFragment() {
+class LaunchDetailFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
-    lateinit var viewModel : LaunchListViewModel
+    lateinit var viewModel : LaunchsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         injector.inject(this)

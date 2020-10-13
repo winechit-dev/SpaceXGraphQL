@@ -1,4 +1,4 @@
-package com.winechitpaing.apollographql.ui.launchList
+package com.winechitpaing.apollographql.ui.launchs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,20 +7,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.winechitpaing.apollographql.R
 import com.winechitpaing.apollographql.adapter.LaunchesAdapter
-import com.winechitpaing.apollographql.common.extension.toast
 import com.winechitpaing.apollographql.common.fragment.BaseFragment
 import com.winechitpaing.apollographql.common.viewmodels.ViewModelFactory
-import com.winechitpaing.domain.result.LaunchListResult
+import com.winechitpaing.apollographql.ui.launchs.uimodel.LaunchsPastUIResult
+import com.winechitpaing.data.common.extension.toast
 import kotlinx.android.synthetic.main.fragment_launch_list.*
 import javax.inject.Inject
 
-class LaunchListFragment : BaseFragment(), LaunchesAdapter.OnItemClickListener {
+class LaunchsFragment : BaseFragment(), LaunchesAdapter.OnItemClickListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
-    lateinit var viewModel: LaunchListViewModel
+    lateinit var viewModel: LaunchsViewModel
 
     private val launchesAdapter: LaunchesAdapter by lazy {
         LaunchesAdapter(this)
@@ -53,10 +53,10 @@ class LaunchListFragment : BaseFragment(), LaunchesAdapter.OnItemClickListener {
 
         viewModel.fetchLaunchList.observe(viewLifecycleOwner, { result ->
             when (result) {
-                is LaunchListResult.Success -> launchesAdapter.setData(result.data)
-                is LaunchListResult.FeatureFailure -> requireContext().toast(result.toString())
-                is LaunchListResult.NetworkConnection -> requireContext().toast(getString(R.string.msg_no_internet_connection))
-                is LaunchListResult.ServerError -> requireContext().toast(getString(R.string.msg_sever_error))
+                is LaunchsPastUIResult.Success -> launchesAdapter.setData(result.data)
+                is LaunchsPastUIResult.FeatureFailure -> requireContext().toast(getString(R.string.msg_data_not_found))
+                is LaunchsPastUIResult.NetworkConnection -> requireContext().toast(getString(R.string.msg_no_internet_connection))
+                is LaunchsPastUIResult.ServerError -> requireContext().toast(result.toString())
                 else -> requireContext().toast(getString(R.string.msg_unknow_error))
             }
         })

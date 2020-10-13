@@ -7,7 +7,7 @@
     tools:ignore="UnusedNavigation">
     <fragment
         android:id="@+id/launch_list_fragment"
-        android:name="com.winechitpaing.apollographql.ui.launchList.LaunchListFragment"
+        android:name="com.winechitpaing.apollographql.ui.launchs.LaunchsFragment"
         android:label="@string/launch_list"
         tools:layout="@layout/fragment_launch_list">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/launch_past_detail_fragment"
-        android:name="com.winechitpaing.apollographql.ui.launchList.LaunchPastDetailFragment"
+        android:name="com.winechitpaing.apollographql.ui.launchs.LaunchDetailFragment"
         android:label="@string/launch_past_detail"
         tools:layout="@layout/fragment_launch_past_detail">
         <action

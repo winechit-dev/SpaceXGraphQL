@@ -10,7 +10,7 @@ class LaunchPastDataMapper {
         return LaunchPast(
             id = entity.id ?: "",
             mission_name = entity.mission_name ?: "",
-            launch_date_local = (entity.launch_date_local ?: 0L) as String,
+            launch_date_local = (entity.launch_date_local.toString().toLongOrNull() ?: 0L),
             links = Links(
                 mission_patch = entity.links?.mission_patch ?: ""
             )

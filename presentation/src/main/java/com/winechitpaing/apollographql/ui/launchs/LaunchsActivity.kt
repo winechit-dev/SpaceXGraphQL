@@ -1,20 +1,19 @@
-package com.winechitpaing.apollographql.ui.launchList
+package com.winechitpaing.apollographql.ui.launchs
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.winechitpaing.apollographql.R
 import com.winechitpaing.apollographql.common.activity.BaseActivity
 import com.winechitpaing.apollographql.common.viewmodels.ViewModelFactory
 import javax.inject.Inject
 
-class LaunchListActivity : BaseActivity() {
+class LaunchsActivity : BaseActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
-    lateinit var viewModel : LaunchListViewModel
+    lateinit var viewModel : LaunchsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

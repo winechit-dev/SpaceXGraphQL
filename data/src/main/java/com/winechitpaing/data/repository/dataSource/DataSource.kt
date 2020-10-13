@@ -1,7 +1,7 @@
 package com.winechitpaing.data.repository.dataSource
 
-import com.winechitpaing.domain.result.LaunchListResult
+import com.winechitpaing.domain.result.LaunchsPastResult
 
 interface DataSource {
-    suspend  fun getLaunchPastList() : LaunchListResult
+    suspend  fun getLaunchPastList() : LaunchsPastResult
 }
