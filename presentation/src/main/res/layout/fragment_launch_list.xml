@@ -7,8 +7,8 @@
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_launch_past"

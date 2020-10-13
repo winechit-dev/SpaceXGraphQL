@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         tools:text="Reddit"
         android:gravity="center_horizontal"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorOnSurface"
         android:padding="8dp"/>
 
 </LinearLayout>
