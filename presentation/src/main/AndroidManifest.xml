@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".SpaceXApplication">
-        <activity android:name=".ui.launchs.LaunchsActivity">
+        <activity android:name=".ui.launchs.LaunchsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

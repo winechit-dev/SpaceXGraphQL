@@ -20,7 +20,6 @@ import com.winechitpaing.data.common.extension.toast
 import com.winechitpaing.domain.model.LaunchDetail
 import com.winechitpaing.domain.result.LaunchDetailResult
 import com.xwray.groupie.ExpandableGroup
-import com.xwray.groupie.ExpandableItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_launch_past_detail.*
@@ -53,9 +52,10 @@ class LaunchDetailFragment : BaseFragment(), LinkItem.OnLinkItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initUI()
     }
+
+
 
     private fun initUI() {
         recyclerView.invisible()
