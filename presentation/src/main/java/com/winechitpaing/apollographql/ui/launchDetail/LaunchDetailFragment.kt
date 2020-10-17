@@ -55,8 +55,6 @@ class LaunchDetailFragment : BaseFragment(), LinkItem.OnLinkItemClickListener {
         initUI()
     }
 
-
-
     private fun initUI() {
         recyclerView.invisible()
         progress_bar.visible()
