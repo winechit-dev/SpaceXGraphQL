@@ -2,7 +2,7 @@ package com.winechitpaing.apollographql.di.presentation.modules
 
 import androidx.lifecycle.ViewModel
 import com.winechitpaing.apollographql.di.presentation.ViewModelKey
-import com.winechitpaing.apollographql.ui.launchList.LaunchListViewModel
+import com.winechitpaing.apollographql.ui.launchs.LaunchsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -12,7 +12,7 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(LaunchListViewModel::class)
-    abstract fun launchListViewModel(launchListViewModel: LaunchListViewModel): ViewModel
+    @ViewModelKey(LaunchsViewModel::class)
+    abstract fun launchListViewModel(launchsViewModel: LaunchsViewModel): ViewModel
 
 }

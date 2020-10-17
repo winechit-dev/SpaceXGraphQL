@@ -1,8 +1,10 @@
 package com.winechitpaing.domain.repository
 
-import com.winechitpaing.domain.result.LaunchListResult
+import com.winechitpaing.domain.result.LaunchDetailResult
+import com.winechitpaing.domain.result.LaunchsPastResult
 
 
 interface DataRepository {
-    suspend  fun getLaunchPastList() : LaunchListResult
+    suspend  fun getLaunchPastList() : LaunchsPastResult
+    suspend fun getLaunchDetail(id : String) : LaunchDetailResult
 }

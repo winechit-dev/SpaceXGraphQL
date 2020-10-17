@@ -26,7 +26,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
+
+
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -35,7 +45,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
 
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
+
 
     // Dagger DI
     api "com.google.dagger:dagger:$dagger_version"
@@ -63,16 +73,16 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
 
-    //viewmodel
+    //viewmodel scope
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    // lifecycle scope
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
+    // liveData scope
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-beta01'
 
     //coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7'
-
-    //retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
 
     //paging
     implementation 'androidx.paging:paging-runtime-ktx:2.1.2'
@@ -83,6 +93,10 @@ dependencies {
     //Epoxy for listing
     implementation "com.airbnb.android:epoxy:$epoxyVersion"
     kapt "com.airbnb.android:epoxy-processor:$epoxyVersion"
+
+    // Groupie
+    implementation "com.xwray:groupie:2.7.0"
+    implementation "com.xwray:groupie-kotlin-android-extensions:2.7.0"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

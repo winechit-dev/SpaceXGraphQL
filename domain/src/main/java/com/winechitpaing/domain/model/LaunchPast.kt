@@ -4,5 +4,5 @@ data class LaunchPast(
     var id : String ,
     var mission_name: String,
     var launch_date_local : String,
-    var links : Links
+    var mission_patch : String
 )
