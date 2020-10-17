@@ -16,17 +16,17 @@ data class LaunchDetailsFragmentArgs(
     companion object {
         @JvmStatic
         fun fromBundle(bundle: Bundle): LaunchDetailsFragmentArgs {
-            bundle.setClassLoader(LaunchDetailsFragmentArgs::class.java.classLoader)
-            val __launchId : String?
+            bundle.classLoader = LaunchDetailsFragmentArgs::class.java.classLoader
+            val launchId : String?
             if (bundle.containsKey("launchId")) {
-                __launchId = bundle.getString("launchId")
-                if (__launchId == null) {
+                launchId = bundle.getString("launchId")
+                if (launchId == null) {
                     throw IllegalArgumentException("Argument \"launchId\" is marked as non-null but was passed a null value.")
                 }
             } else {
                 throw IllegalArgumentException("Required argument \"launchId\" is missing and does not have an android:defaultValue")
             }
-            return LaunchDetailsFragmentArgs(__launchId)
+            return LaunchDetailsFragmentArgs(launchId)
         }
     }
 }
