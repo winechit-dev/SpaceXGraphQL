@@ -11,9 +11,8 @@ import com.winechitpaing.domain.result.LaunchDetailResult
 import com.winechitpaing.domain.result.LaunchsPastResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-class SpaceXApiImpl @Inject constructor(
+class SpaceXApiImpl constructor(
     private val networkHandler: NetworkHandler,
     private val launchPastDataMapper: LaunchPastDataMapper,
     private val apolloClient: ApolloClient

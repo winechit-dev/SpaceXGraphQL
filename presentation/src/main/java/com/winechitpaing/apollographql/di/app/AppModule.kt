@@ -2,6 +2,8 @@ package com.winechitpaing.apollographql.di.app
 
 import android.app.Application
 import com.apollographql.apollo.ApolloClient
+import com.winechitpaing.apollographql.di.data.DataModule
+import com.winechitpaing.apollographql.di.domain.DomainModule
 import com.winechitpaing.data.common.network.ResponseCodeInterceptor
 import com.winechitpaing.data.mapper.LaunchPastDataMapper
 import com.winechitpaing.data.network.SpaceXApi
@@ -17,7 +19,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
-@Module
+@Module(includes = [DataModule::class, DomainModule::class])
 class AppModule(private val application: Application) {
 
     private var API_BASE_URL = "https://api.spacex.land/graphql/"
@@ -62,11 +64,5 @@ class AppModule(private val application: Application) {
 
     @Provides
     fun provideLaunchPastDataMapper() = LaunchPastDataMapper()
-
-    @Provides
-    fun provideDataRepository(launchListRepository: LaunchListRepository): DataRepository = launchListRepository
-
-    @Provides
-    fun provideDataSource(dataSourceImpl: DataSourceImpl): DataSource = dataSourceImpl
 
 }
