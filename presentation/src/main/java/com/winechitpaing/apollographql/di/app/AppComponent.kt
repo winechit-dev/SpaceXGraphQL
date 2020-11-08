@@ -1,12 +1,24 @@
 package com.winechitpaing.apollographql.di.app
 
-import com.winechitpaing.apollographql.di.activity.ActivityComponent
-import com.winechitpaing.domain.repository.DataRepository
+import android.app.Application
+import com.winechitpaing.apollographql.SpaceXApplication
+import com.winechitpaing.apollographql.di.activity.ActivityModule
+import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
+import dagger.android.ContributesAndroidInjector
 
 @AppScope
-@Component(modules = [AppModule::class])
-interface AppComponent {
+@Component(modules = [AndroidInjectionModule::class,AppModule::class])
+interface AppComponent: AndroidInjector<SpaceXApplication> {
 
-    fun newActivityComponentBuilder(): ActivityComponent.Builder
+    @Component.Builder
+    interface Builder{
+        @BindsInstance
+        fun application(app: Application): Builder
+
+        fun build(): AppComponent
+    }
+
 }

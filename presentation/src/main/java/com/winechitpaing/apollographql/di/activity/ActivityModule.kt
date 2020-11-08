@@ -1,15 +1,15 @@
 package com.winechitpaing.apollographql.di.activity
 
-import androidx.appcompat.app.AppCompatActivity
+import com.winechitpaing.apollographql.di.fragment.PresentationComponent
+import com.winechitpaing.apollographql.ui.launchs.LaunchsActivity
 import dagger.Module
-import dagger.Provides
+import dagger.android.ContributesAndroidInjector
 
-@Module
+@Module(subcomponents = [PresentationComponent::class])
 abstract class ActivityModule {
 
-    companion object {
-        @Provides
-        fun fragmentManager(activity: AppCompatActivity) = activity.supportFragmentManager
-    }
+    @ContributesAndroidInjector
+    abstract fun contributeActivity(): LaunchsActivity
+
 }
 

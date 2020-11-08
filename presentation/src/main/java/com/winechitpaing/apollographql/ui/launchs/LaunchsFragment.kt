@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.winechitpaing.apollographql.R
@@ -11,27 +12,16 @@ import com.winechitpaing.apollographql.adapter.LaunchesAdapter
 import com.winechitpaing.apollographql.common.extension.invisible
 import com.winechitpaing.apollographql.common.extension.visible
 import com.winechitpaing.apollographql.common.fragment.BaseFragment
-import com.winechitpaing.apollographql.common.viewmodels.ViewModelFactory
 import com.winechitpaing.apollographql.ui.launchs.uimodel.LaunchsPastUIResult
 import com.winechitpaing.data.common.extension.toast
 import kotlinx.android.synthetic.main.fragment_launch_list.*
-import javax.inject.Inject
 
 class LaunchsFragment : BaseFragment(), LaunchesAdapter.OnItemClickListener {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-
-    @Inject
-    lateinit var viewModel: LaunchsViewModel
+    private val viewModel by viewModels<LaunchsViewModel>{viewModelFactory}
 
     private val launchesAdapter: LaunchesAdapter by lazy {
         LaunchesAdapter(this)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        injector.inject(this)
-        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(

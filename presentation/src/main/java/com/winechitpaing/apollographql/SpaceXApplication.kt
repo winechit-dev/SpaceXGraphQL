@@ -1,16 +1,24 @@
 package com.winechitpaing.apollographql
 
 import android.app.Application
-import com.winechitpaing.apollographql.di.app.AppComponent
-import com.winechitpaing.apollographql.di.app.AppModule
 import com.winechitpaing.apollographql.di.app.DaggerAppComponent
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
+import javax.inject.Inject
 
-class SpaceXApplication :  Application(){
+class SpaceXApplication :  Application(), HasAndroidInjector{
 
-    val appComponent : AppComponent by lazy{
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
+
+    override fun androidInjector() = dispatchingAndroidInjector
+
+    override fun onCreate() {
+        super.onCreate()
         DaggerAppComponent.builder()
-            .appModule(AppModule(this))
+            .application(this)
             .build()
+            .inject(this)
     }
 
 }

@@ -7,13 +7,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.winechitpaing.apollographql.R
 import com.winechitpaing.apollographql.common.extension.invisible
 import com.winechitpaing.apollographql.common.extension.visible
 import com.winechitpaing.apollographql.common.fragment.BaseFragment
-import com.winechitpaing.apollographql.common.viewmodels.ViewModelFactory
 import com.winechitpaing.apollographql.ui.launchDetail.items.*
 import com.winechitpaing.apollographql.ui.launchs.LaunchsViewModel
 import com.winechitpaing.data.common.extension.toast
@@ -23,25 +23,16 @@ import com.xwray.groupie.ExpandableGroup
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_launch_past_detail.*
-import javax.inject.Inject
 
 
 class LaunchDetailFragment : BaseFragment(), LinkItem.OnLinkItemClickListener {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-
-    @Inject
-    lateinit var viewModel: LaunchsViewModel
+    private val viewModel: LaunchsViewModel by viewModels() { viewModelFactory }
 
     private val args: LaunchDetailsFragmentArgs by navArgs()
 
-    private  val groupAdapter: GroupAdapter<GroupieViewHolder> by lazy { GroupAdapter() }
+    private val groupAdapter: GroupAdapter<GroupieViewHolder> by lazy { GroupAdapter() }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        injector.inject(this)
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,7 +67,7 @@ class LaunchDetailFragment : BaseFragment(), LinkItem.OnLinkItemClickListener {
         })
     }
 
-    private fun bindData(launch : LaunchDetail) {
+    private fun bindData(launch: LaunchDetail) {
         Log.d("LaunchDetail", launch.toString())
 
         // Implement diff utils in future
@@ -134,7 +125,7 @@ class LaunchDetailFragment : BaseFragment(), LinkItem.OnLinkItemClickListener {
 
         linksGroup.add(
             LinkItem(
-                 "Article",
+                "Article",
                 launch.links?.article_link,
                 this
             )

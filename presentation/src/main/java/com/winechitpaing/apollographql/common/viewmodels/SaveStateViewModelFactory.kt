@@ -7,7 +7,7 @@ import androidx.savedstate.SavedStateRegistryOwner
 import javax.inject.Inject
 import javax.inject.Provider
 
-class ViewModelFactory @Inject constructor(
+class SaveStateViewModelFactory @Inject constructor(
         private val providersMap: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>,
         savedStateRegistryOwner: SavedStateRegistryOwner
 ): AbstractSavedStateViewModelFactory(savedStateRegistryOwner, null) {

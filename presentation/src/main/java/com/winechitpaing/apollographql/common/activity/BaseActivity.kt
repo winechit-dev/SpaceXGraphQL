@@ -1,21 +1,23 @@
 package com.winechitpaing.apollographql.common.activity
 
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.winechitpaing.apollographql.SpaceXApplication
-import com.winechitpaing.apollographql.di.presentation.modules.PresentationModule
+import com.winechitpaing.apollographql.common.viewmodels.SampleViewModelFactory
+import com.winechitpaing.apollographql.di.fragment.PresentationComponent
+import dagger.android.AndroidInjection
+import javax.inject.Inject
 
 abstract class BaseActivity : AppCompatActivity(){
-     val appComponent get() = (application as SpaceXApplication).appComponent
 
-    val activityComponent by lazy {
-        appComponent.newActivityComponentBuilder()
-            .activity(this)
-            .build()
+    @Inject
+    lateinit var viewModelFactory: SampleViewModelFactory
+
+    @Inject
+    lateinit var presentationBuilder: PresentationComponent.Builder
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
+        super.onCreate(savedInstanceState)
+
     }
-
-    private val presentationComponent by lazy {
-        activityComponent.newPresentationComponent(PresentationModule(this))
-    }
-
-    protected val injector get() = presentationComponent
 }

@@ -2,7 +2,7 @@
 buildscript {
     ext{
         kotlin_version = "1.4.10"
-        dagger_version = '2.28.1'
+        dagger_version = '2.29.1'
         epoxyVersion = "4.1.0"
     }
     repositories {
