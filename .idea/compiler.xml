@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
-      <module name="Apollo_GraphQL.data" target="1.8" />
-      <module name="Apollo_GraphQL.presentation" target="1.8" />
+      <module name="Apollo_GraphQL.data" target="11" />
+      <module name="Apollo_GraphQL.presentation" target="11" />
       <module name="domain" target="1.7" />
     </bytecodeTargetLevel>
   </component>

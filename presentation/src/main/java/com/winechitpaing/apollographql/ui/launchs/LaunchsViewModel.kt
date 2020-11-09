@@ -17,8 +17,6 @@ class LaunchsViewModel @Inject constructor(
     private val getLaunchDetailUseCase: GetLaunchDetailUseCase
 ) : ViewModel() {
 
-    var navigationController: NavController? = null
-
     val fetchLaunchList: LiveData<LaunchsPastUIResult> = liveData {
         when (val result: LaunchsPastResult = getLaunchListUseCase.invoke()) {
             is LaunchsPastResult.Success -> emit(LaunchsPastUIResult.Success(transform(result.data)))
