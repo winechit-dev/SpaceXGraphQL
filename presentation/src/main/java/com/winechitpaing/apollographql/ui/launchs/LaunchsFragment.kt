@@ -69,7 +69,7 @@ class LaunchsFragment : BaseFragment(), LaunchesAdapter.OnItemClickListener {
 
     override fun onItemClicked(id: String) {
         findNavController().navigate(
-            LaunchListFragmentDirections.openLaunchDetails(launchId = id)
+            LaunchsFragmentDirections.actionLaunchListToLaunchPastDetail(id)
         )
     }
 }

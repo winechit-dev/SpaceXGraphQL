@@ -34,7 +34,7 @@ class LaunchDetailFragment : BaseFragment(), LinkItem.OnLinkItemClickListener {
     @Inject
     lateinit var viewModel: LaunchsViewModel
 
-    private val args: LaunchDetailsFragmentArgs by navArgs()
+    private val args: LaunchDetailFragmentArgs by navArgs()
 
     private  val groupAdapter: GroupAdapter<GroupieViewHolder> by lazy { GroupAdapter() }
 

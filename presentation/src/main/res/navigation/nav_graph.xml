@@ -11,7 +11,7 @@
         android:label="@string/launch_list"
         tools:layout="@layout/fragment_launch_list">
         <action
-            android:id="@+id/action_launch_list_fragment_to_launch_past_detail_fragment"
+            android:id="@+id/action_launch_list_to_launch_past_detail"
             app:destination="@+id/launch_past_detail_fragment" />
     </fragment>
     <fragment
@@ -20,7 +20,10 @@
         android:label="@string/launch_past_detail"
         tools:layout="@layout/fragment_launch_past_detail">
         <action
-            android:id="@+id/action_launch_past_detail_fragment_to_launch_list_fragment"
+            android:id="@+id/action_launch_past_detail_to_launch_list"
             app:destination="@+id/launch_list_fragment" />
+        <argument
+            android:name="launchId"
+            app:argType="string" />
     </fragment>
 </navigation>
